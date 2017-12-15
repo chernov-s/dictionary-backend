@@ -1,4 +1,5 @@
 <?php
+
 return [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
@@ -10,4 +11,9 @@ return [
             'class' => 'yii\caching\FileCache',
         ],
     ],
+//    "modules" => [
+//        "word" => [
+//            "class" => 'modules\word\Module',
+//        ],
+//    ],
 ];

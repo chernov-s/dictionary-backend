@@ -12,9 +12,6 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
-        'request' => [
-            'csrfParam' => '_csrf-frontend',
-        ],
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
@@ -36,14 +33,36 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
+            'enableStrictParsing' => true,
             'showScriptName' => false,
             'rules' => [
+                // ['class' => 'yii\rest\UrlRule', 'controller' => 'user'],
+                '' => 'site/index',
+                '<action:(login|signup|contact|about)>' => 'site/<action>',
+
+//                /*
+//                 * View Word
+//                 */
+//                '<module:api>/word/index'               => '<module>/word/index',
+//                'GET,POST <module:api>/word/<id:\d+>'   => '<module>/word/view',
+//                /*
+//                 * CEdit Word
+//                 */
+//                'GET,POST <module:api>/word/create'          => '<module>/word/create',
+//                'GET,POST <module:api>/word/update/<id:\d+>' => '<module>/word/update',
+//                'GET,POST <module:api>/word/delete/<id:\d+>' => '<module>/word/delete',
             ],
         ],
-        */
+        'request' => [
+            'csrfParam' => '_csrf-frontend',
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+            ]
+        ],
     ],
+
+
     'params' => $params,
 ];
